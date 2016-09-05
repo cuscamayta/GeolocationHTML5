@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+   
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <!-- Custom Fonts -->    
+    
+    <title> Example </title>  
+    
+ 
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div style="text-align: center; display: block;" class="text-vertical-center">
+            <h2> GEOLOCALIZACION EN HTML5 </h2>         
+           
+            <h4> Obtener la logitud y latitud de tu ubicacion!!!</h4>
+            <br>
+           
+            <button onclick="getLocation()"> Prueba </button>
+            <p id="demo" style="color:blue"></p>
+            <a id="linkDir" target="_blank"> Enlace al mapa </a>
+        </div>
+    </header>
+
+  
+    <!-- Custom Theme JavaScript -->
+    <script>
+        
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(showPosition);
+            } else {
+                x.innerHTML = "El navegador no soporta Geolocalizacion";}        
+        
+        }
+
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var long = position.coords.longitude;
+            
+            x.innerHTML="Latitud: " + lat + "<br>Longitud: " + long  ;
+            
+            var enlace = "http://maps.google.com/?ll=" + lat + "," + long + "&z=15";
+            
+            document.getElementById("linkDir").href = enlace;
+                
+        }
+  
+  
+    </script>
+
+</body>
+
+</html>
